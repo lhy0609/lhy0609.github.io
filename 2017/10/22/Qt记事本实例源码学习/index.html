@@ -1,0 +1,689 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>Qt记事本实例源码学习 | 李红玉的个人博客</title>
+    <meta name="author" content="Mr.Li">
+    
+    <meta name="description" content="记录生活，分享技术">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Qt记事本实例源码学习"/>
+    <meta property="og:site_name" content="BLOG OF Mr.Li"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="BLOG OF Mr.Li" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">BLOG OF Mr.Li</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            读书
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="https://i.loli.net/2018/12/13/5c11d0005b928.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">李红玉</p>
+                        <p class="desc">图像处理/机器视觉</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    读书
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/C/">
+                    C <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/hexo博客/">
+                    hexo博客 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/OpenCV/">
+                    OpenCV <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Qt/">
+                    Qt <span class="right">10 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Matlab/">
+                    Matlab <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/其他/">
+                    其他 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/python/">
+                    python <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Qt/">Qt</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>Qt记事本实例源码学习</h1>
+    
+
+
+            </div>
+            <time class="pink-link-context" datetime="2017-10-22T03:57:25.000Z"><a href="/2017/10/22/Qt记事本实例源码学习/">2017-10-22</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/Qt/" class="chip pink lighten-1">Qt</a>
+        
+    </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#实现的功能"><span class="section table-of-contents-text">实现的功能</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#打开文件模板"><span class="section table-of-contents-text">打开文件模板</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#保存文件"><span class="section table-of-contents-text">保存文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#获取系统当前时间"><span class="section table-of-contents-text">获取系统当前时间</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#设置文本字体"><span class="section table-of-contents-text">设置文本字体</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#设置文本颜色"><span class="section table-of-contents-text">设置文本颜色</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#使用默认浏览器打开一个网址"><span class="section table-of-contents-text">使用默认浏览器打开一个网址</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#打开一个Dialog"><span class="section table-of-contents-text">打开一个Dialog</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#关闭事件"><span class="section table-of-contents-text">关闭事件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#添加程序图标"><span class="section table-of-contents-text">添加程序图标</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#添加菜单图标"><span class="section table-of-contents-text">添加菜单图标</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#添加TextEdit背景图"><span class="section table-of-contents-text">添加TextEdit背景图</span></a></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <h1 id="实现的功能"><a href="#实现的功能" class="headerlink" title="实现的功能"></a>实现的功能</h1><ul>
+<li>打开文件模板</li>
+<li>保存文件</li>
+<li>获取系统当前时间</li>
+<li>设置文本字体</li>
+<li>设置文本颜色</li>
+<li>使用默认浏览器打开一个网址</li>
+<li>打开一个Dialog</li>
+<li><p>关闭事件</p>
+</li>
+<li><p>添加程序图标</p>
+</li>
+<li>添加菜单图标</li>
+<li>添加TextEdit背景图</li>
+</ul>
+<a id="more"></a>
+<h1 id="打开文件模板"><a href="#打开文件模板" class="headerlink" title="打开文件模板"></a>打开文件模板</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">void MainWindow::openFileSlot()</div><div class="line">&#123;</div><div class="line">    //得到文件名</div><div class="line">    QString openFileName=QFileDialog::getOpenFileName(this,&quot;打开文件&quot;,QDir::currentPath());</div><div class="line"></div><div class="line">//    qDebug()&lt;&lt;&quot;file name is&quot;&lt;&lt;openFileName; //调试用</div><div class="line"></div><div class="line">    //检测是否选中了文件</div><div class="line">    if(openFileName.isEmpty())</div><div class="line">    &#123;</div><div class="line">        QMessageBox::information(this,&quot;警告！&quot;,&quot;请选择一个文件！&quot;);</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //利用这个openFileName打开文件</div><div class="line">    QFile *file = new QFile;//生成一个文件对象</div><div class="line">    file-&gt;setFileName(openFileName);</div><div class="line">    bool ok = file-&gt;open(QIODevice::ReadOnly);//打开经典语句</div><div class="line"></div><div class="line">    if(ok)//如果打开成功</div><div class="line">    &#123;</div><div class="line">        QTextStream in(file);</div><div class="line">        ui-&gt;textEdit-&gt;setText(in.readAll());//读并显示</div><div class="line">        file-&gt;close();</div><div class="line">        delete file;   //释放内存</div><div class="line"></div><div class="line">        /*str = path.section(&apos;/&apos;, -1); // str == &quot;myapp&quot;*/</div><div class="line">        QString name = openFileName.section(&apos;/&apos;,-1);//字符串分节操作</div><div class="line">        this-&gt;setWindowTitle(name);</div><div class="line">    &#125;</div><div class="line">    else//失败</div><div class="line">    &#123;</div><div class="line">//        QMessageBox::information(this,&quot;提示&quot;,&quot;打开文件失败&quot;+file-&gt;errorString());</div><div class="line">//        return;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="保存文件"><a href="#保存文件" class="headerlink" title="保存文件"></a>保存文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">void MainWindow::saveFileSlot()</div><div class="line">&#123;</div><div class="line">    //打开保存文件对话框，获取保存文件路径</div><div class="line">    QString saveFileName = QFileDialog::getSaveFileName(this, &quot;保存文件&quot;,</div><div class="line">                               QDir::currentPath(),</div><div class="line">                               &quot;文档 (*.txt *.doc *.bat);;Text files (*.txt)&quot;);</div><div class="line">    //检测路径是否正确</div><div class="line">    if(saveFileName.isEmpty())</div><div class="line">    &#123;</div><div class="line">        QMessageBox::information(this,&quot;提示&quot;,&quot;文件名不能为空！&quot;);</div><div class="line">        return ;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //file类似一个水箱，QTextStream类似一个管道</div><div class="line">    QFile *file = new QFile;//生成一个文件对象</div><div class="line">    file-&gt;setFileName(saveFileName);</div><div class="line">    bool ok = file-&gt;open(QIODevice::WriteOnly);//打开经典语句</div><div class="line"></div><div class="line">    if(ok)//如果打开成功</div><div class="line">    &#123;</div><div class="line">        QTextStream out(file);</div><div class="line">        out&lt;&lt;ui-&gt;textEdit-&gt;toPlainText();//读并显示</div><div class="line">        file-&gt;close();</div><div class="line">        delete file;   //关闭</div><div class="line">    &#125;</div><div class="line">    else//失败</div><div class="line">    &#123;</div><div class="line">        QMessageBox::information(this,&quot;提示&quot;,&quot;保存文件失败&quot;+file-&gt;errorString());</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="获取系统当前时间"><a href="#获取系统当前时间" class="headerlink" title="获取系统当前时间"></a>获取系统当前时间</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> MainWindow::setDataTimeSlot()</div><div class="line">&#123;</div><div class="line">    <span class="comment">//获取当前时间</span></div><div class="line">    QDateTime current= QDateTime::currentDateTime();</div><div class="line">    QString time = current.toString(<span class="string">"yyyy-M-dd hh:mm:ss"</span>);更改格式</div><div class="line"></div><div class="line">    <span class="comment">//添加到文本的末尾</span></div><div class="line">    ui-&gt;textEdit-&gt;append(time);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="设置文本字体"><a href="#设置文本字体" class="headerlink" title="设置文本字体"></a>设置文本字体</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> MainWindow::setFontSlot()</div><div class="line">&#123;</div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">bool ok;</span></div><div class="line"><span class="comment">QFont font = QFontDialog::getFont(</span></div><div class="line"><span class="comment">                &amp;ok, QFont("Helvetica [Cronyx]", 10), this);</span></div><div class="line"><span class="comment">if (ok) &#123;</span></div><div class="line"><span class="comment">    // the user clicked OK and font is set to the font the user selected</span></div><div class="line"><span class="comment">&#125; else &#123;</span></div><div class="line"><span class="comment">    // the user canceled the dialog; font is set to the initial</span></div><div class="line"><span class="comment">    // value, in this case Helvetica [Cronyx], 10</span></div><div class="line"><span class="comment">&#125;</span></div><div class="line"><span class="comment">*/</span></div><div class="line">    <span class="keyword">bool</span> ok;</div><div class="line">    QFont font = QFontDialog::getFont(&amp;ok,<span class="keyword">this</span>);</div><div class="line">    <span class="keyword">if</span>(ok)</div><div class="line">    &#123;</div><div class="line">       ui-&gt;textEdit-&gt;setFont(font);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="设置文本颜色"><a href="#设置文本颜色" class="headerlink" title="设置文本颜色"></a>设置文本颜色</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> MainWindow::setColorSlot()</div><div class="line">&#123;</div><div class="line">    <span class="comment">/* const QColorDialog::ColorDialogOptions options = QFlag(colorDialogOptionsWidget-&gt;value());</span></div><div class="line"><span class="comment">    const QColor color = QColorDialog::getColor(Qt::green, this, "Select Color", options);</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">    if (color.isValid()) &#123;</span></div><div class="line"><span class="comment">        colorLabel-&gt;setText(color.name());</span></div><div class="line"><span class="comment">        colorLabel-&gt;setPalette(QPalette(color));</span></div><div class="line"><span class="comment">        colorLabel-&gt;setAutoFillBackground(true);</span></div><div class="line"><span class="comment">    &#125;*/</span></div><div class="line"></div><div class="line">    <span class="comment">//调用颜色对话框</span></div><div class="line">    QColor color = QColorDialog::getColor(Qt::red,<span class="keyword">this</span>,<span class="string">"选择颜色"</span>);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (color.isValid())</div><div class="line">    &#123;</div><div class="line">        ui-&gt;textEdit-&gt;setTextColor(color);<span class="comment">//设置文本颜色</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="使用默认浏览器打开一个网址"><a href="#使用默认浏览器打开一个网址" class="headerlink" title="使用默认浏览器打开一个网址"></a>使用默认浏览器打开一个网址</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> MainWindow::aboutWebsiteSlot()</div><div class="line">&#123;</div><div class="line">    <span class="comment">/*QDesktopServices::openUrl(</span></div><div class="line"><span class="comment">     * QUrl("file:///C:/Documents and Settings/All Users/Desktop", QUrl::TolerantMode));*/</span></div><div class="line"></div><div class="line">    QDesktopServices::openUrl(QUrl(<span class="string">"https://www.baidu.com/"</span>));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="打开一个Dialog"><a href="#打开一个Dialog" class="headerlink" title="打开一个Dialog"></a>打开一个Dialog</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> MainWindow::openAboutDialog()</div><div class="line">&#123;</div><div class="line">    about *aboutDialog = <span class="keyword">new</span> about;</div><div class="line">    aboutDialog-&gt;show();<span class="comment">//非模态//aboutDialog.exec();</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="关闭事件"><a href="#关闭事件" class="headerlink" title="关闭事件"></a>关闭事件</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> MainWindow::closeEvent(QCloseEvent *event)</div><div class="line">&#123;</div><div class="line">    <span class="comment">/*void MainWindow::closeEvent(QCloseEvent *event)</span></div><div class="line"><span class="comment">&#123;</span></div><div class="line"><span class="comment">    if (maybeSave()) &#123;</span></div><div class="line"><span class="comment">        writeSettings();</span></div><div class="line"><span class="comment">        event-&gt;accept();</span></div><div class="line"><span class="comment">    &#125; else &#123;</span></div><div class="line"><span class="comment">        event-&gt;ignore();</span></div><div class="line"><span class="comment">    &#125;</span></div><div class="line"><span class="comment">&#125;*/</span></div><div class="line">    <span class="comment">//如果文本发生改变</span></div><div class="line">    <span class="keyword">if</span>(ui-&gt;textEdit-&gt;document()-&gt;isModified())</div><div class="line">    &#123;</div><div class="line">        QMessageBox msgBox;</div><div class="line">        msgBox.setText(<span class="string">"文件已经变更："</span>);</div><div class="line">        msgBox.setInformativeText(<span class="string">"你想保存文件吗？"</span>);</div><div class="line">        msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);</div><div class="line">        msgBox.setDefaultButton(QMessageBox::Save);</div><div class="line"></div><div class="line">        <span class="keyword">int</span> ret = msgBox.exec();</div><div class="line"></div><div class="line">        <span class="keyword">switch</span> (ret) &#123;</div><div class="line">          <span class="keyword">case</span> QMessageBox::Save:</div><div class="line">              <span class="comment">// Save was clicked</span></div><div class="line">            <span class="keyword">this</span>-&gt;saveFileSlot();</div><div class="line">            event-&gt;ignore();</div><div class="line">              <span class="keyword">break</span>;</div><div class="line">          <span class="keyword">case</span> QMessageBox::Discard:</div><div class="line">              <span class="comment">// Don't Save was clicked</span></div><div class="line">             event-&gt;accept();</div><div class="line">              <span class="keyword">break</span>;</div><div class="line">          <span class="keyword">case</span> QMessageBox::Cancel:</div><div class="line">              <span class="comment">// Cancel was clicked</span></div><div class="line">            event-&gt;ignore();</div><div class="line">              <span class="keyword">break</span>;</div><div class="line">          <span class="keyword">default</span>:</div><div class="line">              <span class="comment">// should never be reached</span></div><div class="line">            event-&gt;ignore();</div><div class="line">              <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="添加程序图标"><a href="#添加程序图标" class="headerlink" title="添加程序图标"></a>添加程序图标</h1><p>在.pro文件加入</p>
+<p><code>RC_ICONS = myappico.ico</code></p>
+<p>也可在帮助中查找setting the application icon ，有一个添加.rc文件的方法</p>
+<h1 id="添加菜单图标"><a href="#添加菜单图标" class="headerlink" title="添加菜单图标"></a>添加菜单图标</h1><p>右键文件列表最上的工程名-&gt;选择添加新文件-&gt;点击Qt-&gt;点击Qt Resource File-&gt;点击右下角choose-&gt;输入名字（如res）-&gt;下一步到完成</p>
+<p>此时.pro文件就会有res文件加入，文件列表多出Resource文件夹</p>
+<p>点击res.qrc-&gt;点击Add prefix添加前缀-&gt;之后点击Add Files添加图片</p>
+<p>进入ui界面，在Action Editor 右键任意Action选Edit，选择图标</p>
+<p>工具栏图标可直接拖拽</p>
+<h1 id="添加TextEdit背景图"><a href="#添加TextEdit背景图" class="headerlink" title="添加TextEdit背景图"></a>添加TextEdit背景图</h1><p>ui界面</p>
+<p>右键TextEdit部件</p>
+<p>改变样式表-&gt;添加资源-&gt;border-image</p>
+<p>点一下刷新按钮，选择图片</p>
+
+                
+<p class="pink-link-context">
+    <a href="/2017/10/22/C-类的三种调用方式区别/" rel="next" title="C++类的三种调用方式区别">
+    上一篇：C++类的三种调用方式区别
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/2017/10/03/将hexo博客部署到coding/" rel="next" title="将hexo博客部署到coding">
+    下一篇：将hexo博客部署到coding
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer indigo darken-1">
+    
+    <div class="footer-container container">
+        <div class="row">
+            
+            <div class="social-group col m4 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href=" " target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/lhy0609" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+                    <a class="social-link" href="/atom.xml" target="_blank">
+                        <i class="fa fa-2x fa-rss"></i>
+                    </a>
+                
+                
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <div class="site-visitors-container white-text">
+        <span>
+            <i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            <i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+
+
+            </div>
+            
+
+            
+            <div class="col m8 s12">
+                <h5 class="white-text">友情链接</h5>
+                
+                    <a class="social-link" href="https://github.com/lhy0609" target="_blank">Github地址</a>
+                
+                    <a class="social-link" href="http://www.panduoduo.net/" target="_blank">盘多多</a>
+                
+                    <a class="social-link" href="https://ww2.mathworks.cn/help/" target="_blank">Matlab文档</a>
+                
+                    <a class="social-link" href="https://cn.bing.com/" target="_blank">Bing</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright pink-link-context">
+        <div class="container">
+            © 2017 lhy0609, All rights reserved.
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+            // 添加new标签
+            $('.menu-reading').append('<span class="new badge pink"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?{{ theme.baidu_analytics }}";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>

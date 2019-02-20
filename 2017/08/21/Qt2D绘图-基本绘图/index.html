@@ -1,0 +1,677 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>Qt2D绘图-基本绘图 | 李红玉的个人博客</title>
+    <meta name="author" content="Mr.Li">
+    
+    <meta name="description" content="记录生活，分享技术">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Qt2D绘图-基本绘图"/>
+    <meta property="og:site_name" content="BLOG OF Mr.Li"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="BLOG OF Mr.Li" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">BLOG OF Mr.Li</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            读书
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="https://i.loli.net/2018/12/13/5c11d0005b928.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">李红玉</p>
+                        <p class="desc">图像处理/机器视觉</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    读书
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/C/">
+                    C <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/hexo博客/">
+                    hexo博客 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/OpenCV/">
+                    OpenCV <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Qt/">
+                    Qt <span class="right">10 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Matlab/">
+                    Matlab <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/其他/">
+                    其他 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/python/">
+                    python <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Qt/">Qt</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>Qt2D绘图-基本绘图</h1>
+    
+
+
+            </div>
+            <time class="pink-link-context" datetime="2017-08-21T02:35:20.000Z"><a href="/2017/08/21/Qt2D绘图-基本绘图/">2017-08-21</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/Qt/" class="chip pink lighten-1">Qt</a>
+        
+            <a href="/tags/2D绘图/" class="chip pink lighten-1">2D绘图</a>
+        
+    </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#前言"><span class="section table-of-contents-text">前言</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#基本绘制"><span class="section table-of-contents-text">基本绘制</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#如何画线、矩形、椭圆"><span class="section table-of-contents-text">如何画线、矩形、椭圆</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#抗锯齿-反走样"><span class="section table-of-contents-text">抗锯齿 反走样</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#渐变"><span class="section table-of-contents-text">渐变</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#坐标系统"><span class="section table-of-contents-text">坐标系统</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#坐标变换"><span class="section table-of-contents-text">坐标变换</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#改变坐标系"><span class="section table-of-contents-text">改变坐标系</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#绘制路径"><span class="section table-of-contents-text">绘制路径</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#简单应用"><span class="section table-of-contents-text">简单应用</span></a></li></ol></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>参考：<a href="http://www.qter.org/portal.php?mod=view&amp;aid=26" target="_blank" rel="external">Qt快速入门系列教程</a>  </p>
+<p>此页是自己学习使随记，全面的请看教程  </p>
+<p>Qt有一个图形视图框架，有关图形项-&gt;场景-&gt;视图，碰撞检测，适合做游戏</p>
+<a id="more"></a>
+<p><strong>Qt绘制系统</strong></p>
+<p>QPainter是一个状态机，设定一个状态后，接下来一直是这个状态</p>
+<p><em>临时绘制</em>就是不改变当前状态，使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">painter.save()</div><div class="line">//code</div><div class="line">painter.restore()</div></pre></td></tr></table></figure></p>
+<p>必须成对出现。</p>
+<h1 id="基本绘制"><a href="#基本绘制" class="headerlink" title="基本绘制"></a>基本绘制</h1><h2 id="如何画线、矩形、椭圆"><a href="#如何画线、矩形、椭圆" class="headerlink" title="如何画线、矩形、椭圆"></a>如何画线、矩形、椭圆</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function">QPainter <span class="title">painter</span><span class="params">(<span class="keyword">this</span>)</span></span>;</div><div class="line">painter.drawLine(<span class="number">80</span>, <span class="number">100</span>, <span class="number">650</span>, <span class="number">500</span>);</div><div class="line"></div><div class="line">painter.setPen(Qt::red);</div><div class="line">painter.drawRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">100</span>, <span class="number">400</span>);</div><div class="line"></div><div class="line">painter.setPen(QPen(Qt::green, <span class="number">5</span>));<span class="comment">//5代表的是像素</span></div><div class="line">painter.setBrush(Qt::blue);</div><div class="line">painter.drawEllipse(<span class="number">50</span>, <span class="number">150</span>, <span class="number">400</span>, <span class="number">200</span>);</div></pre></td></tr></table></figure>
+<h2 id="抗锯齿-反走样"><a href="#抗锯齿-反走样" class="headerlink" title="抗锯齿 反走样"></a>抗锯齿 反走样</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">painter.setRenderHint(QPainter::Antialiasing, <span class="literal">true</span>);</div><div class="line">painter.setPen(QPen(Qt::black, <span class="number">5</span>, Qt::DashDotLine, Qt::RoundCap));</div><div class="line">painter.setBrush(Qt::yellow);</div><div class="line">painter.drawEllipse(<span class="number">300</span>, <span class="number">150</span>, <span class="number">200</span>, <span class="number">150</span>);</div></pre></td></tr></table></figure>
+<h1 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h1><p>Qt 提供了三种渐变：线性渐变（QLinearGradient）、辐射渐变（QRadialGradient）和角度渐变（QConicalGradient）。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//渐变效果</span></div><div class="line">painter.setRenderHint(QPainter::Antialiasing,<span class="literal">true</span>);</div><div class="line"></div><div class="line"><span class="function">QLinearGradient <span class="title">linearGradient</span><span class="params">(<span class="number">60</span>,<span class="number">50</span>,<span class="number">200</span>,<span class="number">200</span>)</span></span>;</div><div class="line">linearGradient.setColorAt(<span class="number">0.2</span>,Qt::white); <span class="comment">//渐变区域五分之一处设置为白色</span></div><div class="line">linearGradient.setColorAt(<span class="number">0.6</span>,Qt::green);</div><div class="line">linearGradient.setColorAt(<span class="number">1.0</span>,Qt::black);</div><div class="line"></div><div class="line">painter.setBrush(QBrush(linearGradient));</div><div class="line">painter.drawEllipse(<span class="number">50</span>,<span class="number">50</span>,<span class="number">200</span>,<span class="number">150</span>);</div></pre></td></tr></table></figure></p>
+<p><a href="http://www.qter.org/portal.php?mod=view&amp;aid=39" target="_blank" rel="external">三种渐变方式</a></p>
+<h1 id="坐标系统"><a href="#坐标系统" class="headerlink" title="坐标系统"></a>坐标系统</h1><h2 id="坐标变换"><a href="#坐标变换" class="headerlink" title="坐标变换"></a>坐标变换</h2><ul>
+<li>平移     translate()</li>
+<li>顺时针   rotate()</li>
+<li>放大     scale()</li>
+<li>纵向扭曲 shear()</li>
+</ul>
+<h2 id="改变坐标系"><a href="#改变坐标系" class="headerlink" title="改变坐标系"></a>改变坐标系</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function">QPainter <span class="title">painter</span><span class="params">(<span class="keyword">this</span>)</span></span>;</div><div class="line">painter.setWindow(<span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>, <span class="number">200</span>);<span class="comment">//重新设定当前窗口坐标的格式，让其左上（0，0），右下（200，200），改变坐标系</span></div><div class="line">painter.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>, <span class="number">200</span>, Qt::red);<span class="comment">//填充矩形</span></div></pre></td></tr></table></figure>
+<p>setViewPort()<br>设置显示图形的范围</p>
+<h1 id="绘制路径"><a href="#绘制路径" class="headerlink" title="绘制路径"></a>绘制路径</h1><p>&emsp;使用QPainterPath类，然后使用QPainter::drawPath()来进行绘制。QPainterPath类为绘制操作提供了一个<code>容器</code>，可以用来创建图形并且重复使用。<br>&emsp;一个绘图路径就是由多个矩形、椭圆、线条或者曲线等组成的对象，一个路径可以是封闭的，例如矩形和椭圆；也可以是非封闭的，例如线条和曲线。</p>
+<h2 id="简单应用"><a href="#简单应用" class="headerlink" title="简单应用"></a>简单应用</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> Widget::paintEvent(QPaintEvent *)</div><div class="line">&#123;</div><div class="line">    QPainterPath path;</div><div class="line">    path.addEllipse(<span class="number">100</span>, <span class="number">100</span>, <span class="number">50</span>, <span class="number">50</span>);</div><div class="line">    path.lineTo(<span class="number">200</span>, <span class="number">200</span>);</div><div class="line">    <span class="function">QPainter <span class="title">painter</span><span class="params">(<span class="keyword">this</span>)</span></span>;</div><div class="line">    painter.setPen(Qt::blue);</div><div class="line">    painter.setBrush(Qt::red);</div><div class="line">    painter.drawPath(path);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+                
+<p class="pink-link-context">
+    <a href="/2017/08/23/opencv3-1-Qt5-9-1环境搭建/" rel="next" title="OpenCV3.1+Qt5.9.1环境搭建">
+    上一篇：OpenCV3.1+Qt5.9.1环境搭建
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/2017/08/21/Qt2D绘图-窗口与视口/" rel="next" title="Qt2D绘图-窗口与视口">
+    下一篇：Qt2D绘图-窗口与视口
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer indigo darken-1">
+    
+    <div class="footer-container container">
+        <div class="row">
+            
+            <div class="social-group col m4 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href=" " target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/lhy0609" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+                    <a class="social-link" href="/atom.xml" target="_blank">
+                        <i class="fa fa-2x fa-rss"></i>
+                    </a>
+                
+                
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <div class="site-visitors-container white-text">
+        <span>
+            <i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            <i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+
+
+            </div>
+            
+
+            
+            <div class="col m8 s12">
+                <h5 class="white-text">友情链接</h5>
+                
+                    <a class="social-link" href="https://github.com/lhy0609" target="_blank">Github地址</a>
+                
+                    <a class="social-link" href="http://www.panduoduo.net/" target="_blank">盘多多</a>
+                
+                    <a class="social-link" href="https://ww2.mathworks.cn/help/" target="_blank">Matlab文档</a>
+                
+                    <a class="social-link" href="https://cn.bing.com/" target="_blank">Bing</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright pink-link-context">
+        <div class="container">
+            © 2017 lhy0609, All rights reserved.
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+            // 添加new标签
+            $('.menu-reading').append('<span class="new badge pink"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?{{ theme.baidu_analytics }}";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>

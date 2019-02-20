@@ -1,0 +1,709 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>移动硬盘上安装Ubuntu系统 | 李红玉的个人博客</title>
+    <meta name="author" content="Mr.Li">
+    
+    <meta name="description" content="记录生活，分享技术">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="移动硬盘上安装Ubuntu系统"/>
+    <meta property="og:site_name" content="BLOG OF Mr.Li"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="BLOG OF Mr.Li" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">BLOG OF Mr.Li</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            读书
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="https://i.loli.net/2018/12/13/5c11d0005b928.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">李红玉</p>
+                        <p class="desc">图像处理/机器视觉</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    读书
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/C/">
+                    C <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/hexo博客/">
+                    hexo博客 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/OpenCV/">
+                    OpenCV <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Qt/">
+                    Qt <span class="right">10 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Matlab/">
+                    Matlab <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/其他/">
+                    其他 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/python/">
+                    python <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/其他/">其他</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>移动硬盘上安装Ubuntu系统</h1>
+    
+
+
+            </div>
+            <time class="pink-link-context" datetime="2018-08-03T09:35:26.000Z"><a href="/2018/08/03/移动硬盘上安装Ubuntu系统/">2018-08-03</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/Ubuntu/" class="chip pink lighten-1">Ubuntu</a>
+        
+    </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#准备的工具"><span class="section table-of-contents-text">准备的工具</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#制作启动盘"><span class="section table-of-contents-text">制作启动盘</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#正式安装之前先说明一些问题"><span class="section table-of-contents-text">正式安装之前先说明一些问题</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-移动硬盘是否需要先格式化"><span class="section table-of-contents-text">1.移动硬盘是否需要先格式化</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2引导方式问题"><span class="section table-of-contents-text">2引导方式问题</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#正式安装"><span class="section table-of-contents-text">正式安装</span></a></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <p>这次瞎折腾的缘由一是一直想体验一下linux系统，到底好不好用，毕竟试过才知道。借用TESTV的宣传语，“帮你try，before you buy” ,那我就是“I want try, before you use”；二是办公的地方有一台旧电脑，想把它利用起来，然后把系统装在移动硬盘上，做到随插随用，岂不美哉😏。</p>
+<p>中间爬了不少坑，现把它记录下来。</p>
+<p>Let`s do it!</p>
+<p>主参考教程：<a href="https://mzz.pub/2017/12/22/justplay/mobileubuntu/" target="_blank" rel="external">把Ubuntu16.04装进移动硬盘的惨痛实战</a></p>
+<a id="more"></a>
+<p>先放一张装好的图片<br><img src="" alt=""></p>
+<p>这是装好Ubuntu之后，安装了Mac主题</p>
+<h1 id="准备的工具"><a href="#准备的工具" class="headerlink" title="准备的工具"></a>准备的工具</h1><p>Ubuntu镜像文件: 官网下载<br>启动盘制作工具： <a href="https://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3/" target="_blank" rel="external">Universal-USB-Installer</a></p>
+<p>磁盘管理（分区）： DiskGenius</p>
+<p>移动硬盘；U盘（8G以上）；</p>
+<h1 id="制作启动盘"><a href="#制作启动盘" class="headerlink" title="制作启动盘"></a>制作启动盘</h1><p>运行Universal-USB-Installer,参考 <em>参考教程</em></p>
+<h1 id="正式安装之前先说明一些问题"><a href="#正式安装之前先说明一些问题" class="headerlink" title="正式安装之前先说明一些问题"></a>正式安装之前先说明一些问题</h1><h2 id="1-移动硬盘是否需要先格式化"><a href="#1-移动硬盘是否需要先格式化" class="headerlink" title="1.移动硬盘是否需要先格式化"></a>1.移动硬盘是否需要先格式化</h2><p>我的结论不需要（<em>虽然我当初怕弄丢我硬盘的数据，还是把他格式化了；真香警告😂！</em>），我建议如果可以的话，还是最好备份一下，毕竟数据无价😊。<br>如果选择不格式化，则分出足够装ubuntu大小的一个分区，将其删除设为空闲，你没听错，设成空实现，因为这样也可以在装的过程中进行分区（但可能会遇到传说的4K对齐的问题）。</p>
+<p>我当初的步骤是:</p>
+<ul>
+<li>格式化整个硬盘</li>
+<li>使用DiskGenius软件进行分区</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th style="text-align:center">格式</th>
+<th style="text-align:center">大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/ (主分区)</td>
+<td style="text-align:center">ext4</td>
+<td style="text-align:center">20G</td>
+</tr>
+<tr>
+<td>swag（交换分区）</td>
+<td style="text-align:center">swap</td>
+<td style="text-align:center">2G</td>
+</tr>
+<tr>
+<td>/home</td>
+<td style="text-align:center">ext4</td>
+<td style="text-align:center">100G</td>
+</tr>
+</tbody>
+</table>
+<p>其余全分成ntfs用作日常使用，最终移动硬盘插在windows系统上的时候，装ubuntu系统那部分是隐藏的。</p>
+<h2 id="2引导方式问题"><a href="#2引导方式问题" class="headerlink" title="2引导方式问题"></a>2引导方式问题</h2><p>我的电脑是UEFI引导＋GPT分区格式，如果你的电脑购买时预装win8.1以上系统，恭喜你就是这种模式。老电脑一般是legacy+MBR模式，可百度了解一下。</p>
+<p>我最终安装成功是ubuntu采用legacy引导，win10采用UEFI引导</p>
+<p>所以进ubuntu需要开机时按F12进行引导选择，win10不用</p>
+<p>我是DELL电脑，BIOS中需要将 <code>security boot</code> 设为 <code>disable</code><br><code>legacy</code> 设为 <code>enable</code>；</p>
+<h1 id="正式安装"><a href="#正式安装" class="headerlink" title="正式安装"></a>正式安装</h1><p>U盘启动进入Ubuntu live界面</p>
+<p>此后参考主教程： 安装ubuntu</p>
+<p>到分区那一步刹车，找到你的移动硬盘<br>因为咱之前已分好区，这时候将 <code>/</code> <code>swag</code> <code>/home</code> 三个分区分别点击更改<br>选择好标识与格式，格式化可选，点击确定</p>
+<p>使其变成真正可识别的分区</p>
+<p>Device for boot loader installation 选择你的主分区</p>
+<p>之后接着看完<code>安装ubuntu</code>这一节</p>
+<p>装完就可</p>
+<p>大功告成👍！ 接下来就是Mac主题安装</p>
+
+                
+<p class="pink-link-context">
+    <a href="/2018/10/29/C-命名规范/" rel="next" title="C++命名规范">
+    上一篇：C++命名规范
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/2018/06/21/安装opencv扩展库contrib/" rel="next" title="安装OpenCV扩展库contrib">
+    下一篇：安装OpenCV扩展库contrib
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer indigo darken-1">
+    
+    <div class="footer-container container">
+        <div class="row">
+            
+            <div class="social-group col m4 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href=" " target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/lhy0609" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+                    <a class="social-link" href="/atom.xml" target="_blank">
+                        <i class="fa fa-2x fa-rss"></i>
+                    </a>
+                
+                
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <div class="site-visitors-container white-text">
+        <span>
+            <i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            <i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+
+
+            </div>
+            
+
+            
+            <div class="col m8 s12">
+                <h5 class="white-text">友情链接</h5>
+                
+                    <a class="social-link" href="https://github.com/lhy0609" target="_blank">Github地址</a>
+                
+                    <a class="social-link" href="http://www.panduoduo.net/" target="_blank">盘多多</a>
+                
+                    <a class="social-link" href="https://ww2.mathworks.cn/help/" target="_blank">Matlab文档</a>
+                
+                    <a class="social-link" href="https://cn.bing.com/" target="_blank">Bing</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright pink-link-context">
+        <div class="container">
+            © 2017 lhy0609, All rights reserved.
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+            // 添加new标签
+            $('.menu-reading').append('<span class="new badge pink"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?{{ theme.baidu_analytics }}";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>
